@@ -40,10 +40,10 @@ const Register = () => {
 
   return (
     <form
-      className="w-full max-w-sm p-8 mx-auto rounded shadow-lg bg-gradient-to-b"
+      className="flex flex-col gap-4 w-full max-w-sm p-8 mx-auto rounded shadow-lg bg-gradient-to-b "
       onSubmit={onSubmit}
     >
-      <h2 className="text-3xl font-bold mb-3">Create an Account</h2>
+      <h2 className="text-3xl font-bold">Create an Account</h2>
       <div>
         <label className="text-sm font-semibold">
           Name
@@ -51,7 +51,7 @@ const Register = () => {
             type="text"
             placeholder="First and Last Name"
             {...register("name", { required: "Name is required" })}
-            className="w-full border border-gray-300 px-3 py-2 rounded-lg mb-2"
+            className="w-full border border-gray-300 px-3 py-2 rounded-lg"
           />
           {errors.name && (
             <span className="text-red-500 text-sm">{errors.name.message}</span>
@@ -63,7 +63,7 @@ const Register = () => {
         <input
           type="email"
           {...register("email", { required: "Email is required" })}
-          className="w-full border border-gray-300 px-3 py-2 rounded-lg mb-2"
+          className="w-full border border-gray-300 px-3 py-2 rounded-lg"
         />
         {errors.email && (
           <span className="text-red-500 text-sm">{errors.email.message}</span>
@@ -75,7 +75,7 @@ const Register = () => {
           type="password"
           placeholder="At least 6 characters"
           {...register("password", { required: "Password is required" })}
-          className="w-full border border-gray-300 px-3 py-2 rounded-lg mb-2"
+          className="w-full border border-gray-300 px-3 py-2 rounded-lg"
         />
         {errors.password && (
           <span className="text-red-500 text-sm">
@@ -97,7 +97,7 @@ const Register = () => {
                 }
               },
             })}
-            className="w-full border border-gray-300 px-3 py-2 rounded-lg mb-2"
+            className="w-full border border-gray-300 px-3 py-2 rounded-lg"
           />
           {errors.confirmPassword && (
             <span className="text-red-500 text-sm">
@@ -106,8 +106,14 @@ const Register = () => {
           )}
         </label>
       </div>
-      <span className="flex items-center justify-between">
-        <span className="text-sm mt-4">
+      <span className="flex flex-col items-center justify-between">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white font-semibold px-5 py-2 rounded-lg mb-3 w-full"
+        >
+          Register
+        </button>
+        <span className="text-sm">
           Already have an account? {""}
           <Link
             to="/sign-in"
@@ -116,12 +122,6 @@ const Register = () => {
             Sign In
           </Link>
         </span>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white font-semibold px-5 py-2 rounded-lg mt-4"
-        >
-          Register
-        </button>
       </span>
     </form>
   );

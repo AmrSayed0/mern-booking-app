@@ -37,40 +37,50 @@ const SignIn = () => {
 
   return (
     <form
-      className="w-full max-w-sm p-8 mx-auto rounded shadow-lg bg-gradient-to-b"
+      className="flex flex-col gap-4 w-full max-w-sm p-8 mx-auto rounded shadow-lg bg-gradient-to-b "
       onSubmit={onSubmit}
     >
-      <h2 className="text-3xl font-bold mb-3">Sign In</h2>
-      <label className="text-gray-700 text-sm font-bold flex-1">
-        Email
-        <input
-          type="email"
-          className="border rounded w-full py-1 px-2 font-normal mb-3"
-          {...register("email", { required: "This field is required" })}
-        ></input>
-        {errors.email && (
-          <span className="text-red-500">{errors.email.message}</span>
-        )}
-      </label>
-      <label className="text-gray-700 text-sm font-bold flex-1">
-        Password
-        <input
-          type="password"
-          className="border rounded w-full py-1 px-2 font-normal"
-          {...register("password", {
-            required: "This field is required",
-            minLength: {
-              value: 6,
-              message: "Password must be at least 6 characters",
-            },
-          })}
-        ></input>
-        {errors.password && (
-          <span className="text-red-500">{errors.password.message}</span>
-        )}
-      </label>
-      <span className="flex items-center justify-between">
-        <span className="text-sm mt-4">
+      <h2 className="text-3xl font-bold">Sign In</h2>
+      <div>
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Email
+          <input
+            type="email"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("email", { required: "This field is required" })}
+          ></input>
+          {errors.email && (
+            <span className="text-red-500">{errors.email.message}</span>
+          )}
+        </label>
+      </div>
+      <div>
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Password
+          <input
+            type="password"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("password", {
+              required: "This field is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
+          ></input>
+          {errors.password && (
+            <span className="text-red-500">{errors.password.message}</span>
+          )}
+        </label>
+      </div>
+      <span className="flex flex-col items-center justify-between">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white font-semibold px-5 py-2 rounded-lg w-full mb-3"
+        >
+          Login
+        </button>
+        <span className="text-sm">
           Not Registered?{" "}
           <Link
             className="hover:underline font-semibold text-blue-500"
@@ -79,12 +89,6 @@ const SignIn = () => {
             Create an account
           </Link>
         </span>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white font-semibold px-5 py-2 rounded-lg mt-4"
-        >
-          Login
-        </button>
       </span>
     </form>
   );
