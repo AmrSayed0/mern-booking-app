@@ -1,6 +1,5 @@
-// defied all types of context
-import React, { useState } from "react";
-import Toast from "../components/Toast";
+import React, { useContext, useState } from "react";
+import Toast from "../components/Toast"; // Toast notification
 import { useQuery } from "react-query";
 import * as apiClient from "../api-client";
 
@@ -9,23 +8,22 @@ type ToastMessage = {
   type: "SUCCESS" | "ERROR";
 };
 
-export type AppContext = {
+type AppContext = {
   showToast: (toastMessage: ToastMessage) => void;
-  isLoggedIn: () => boolean;
+  isLoggedIn: boolean;
 };
 
-export const AppContext = React.createContext<AppContext | undefined>(
-  undefined
-);
+const AppContext = React.createContext<AppContext | undefined>(undefined);
 
-// create a provider component that accepts a value
 export const AppContextProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
+  // Toast notification
   const [toast, setToast] = useState<ToastMessage | undefined>(undefined);
 
+  // g) checking user cookie login state
   const { isError } = useQuery("validateToken", apiClient.validateToken, {
     retry: false,
   });
@@ -33,12 +31,14 @@ export const AppContextProvider = ({
   return (
     <AppContext.Provider
       value={{
+        // Toast notification
         showToast: (toastMessage) => {
           setToast(toastMessage);
         },
-        isLoggedIn: () => !isError,
+        isLoggedIn: !isError,
       }}
     >
+      {/* // Toast notification */}
       {toast && (
         <Toast
           message={toast.message}
@@ -49,4 +49,9 @@ export const AppContextProvider = ({
       {children}
     </AppContext.Provider>
   );
+};
+
+export const useAppContext = () => {
+  const context = useContext(AppContext);
+  return context as AppContext;
 };
