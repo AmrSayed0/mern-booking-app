@@ -1,8 +1,8 @@
 export type UserType = {
   _id: string;
-  name: string;
   email: string;
   password: string;
+  name: string;
 };
 
 export type HotelType = {
@@ -20,4 +20,13 @@ export type HotelType = {
   starRating: number;
   imageUrls: string[];
   lastUpdated: Date;
+};
+
+export type HotelSearchResponse = {
+  data: HotelType[];
+  pagination: {
+    total: number;
+    page: number;
+    pages: number;
+  };
 };
