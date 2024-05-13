@@ -2,6 +2,8 @@ export type UserType = {
   _id: string;
   email: string;
   password: string;
+  // firstName: string;
+  // lastName: string;
   name: string;
 };
 
@@ -43,4 +45,10 @@ export type HotelSearchResponse = {
     page: number;
     pages: number;
   };
+};
+
+export type PaymentIntentResponse = {
+  paymentIntentId: string;
+  clientSecret: string;
+  totalCost: number;
 };
