@@ -45,6 +45,14 @@ app.get("*", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
 });
 
-app.listen(7000, () => {
-  console.log("server running on localhost:7000");
+const port = process.env.PORT || 7000;
+const server = app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (err: any, promise) => {
+  console.log("UNHANDLED REJECTION! 💥 Shutting down...");
+  console.log(`Error: ${err.message}`);
+  server.close(() => process.exit(1));
 });
