@@ -151,4 +151,4 @@ cd mern-booking-app
 
 ## Demo
 
-You can view a live demo of the application [here](https://mern-booking-app.vercel.app/).
+You can view a live demo of the application [here](https://mern-booking-app-kja7.onrender.com/).
