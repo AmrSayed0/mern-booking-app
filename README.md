@@ -19,15 +19,7 @@ This is a full-stack MERN application that allows users to book hotel rooms. The
 - **Authentication**: JWT
 - **Payment Processing**: Stripe
 
-## Folder Structure
-
-The repository is organized into the following folders:
-
-- **backend**: Contains the Node.js backend code.
-- **frontend**: Contains the React frontend code.
-- **e2e-tests**: Contains end-to-end tests for the application.
-
-# Getting Started
+## Getting Started
 
 This section provides a step-by-step guide to setting up the MERN Booking App on your local machine.
 
