@@ -143,4 +143,4 @@ cd mern-booking-app
 
 ## Demo
 
-You can view a live demo of the application [here](https://mern-booking-app-kja7.onrender.com/).
+You can view a live demo of the application [here](https://mern-booking-32f0b06a6ad6.herokuapp.com/).
